@@ -2,6 +2,7 @@
   'use strict';
   const $ = (s) => document.querySelector(s);
   const cards = [...document.querySelectorAll('.day-card')];
+  const calendar = document.body.dataset.calendar === 'true';
   if (!cards.length) return;
   const controls = {country: $('#country'), day: $('#day'), region: $('#region'), search: $('#search')};
   const weeks = [...document.querySelectorAll('.week-chip')];
@@ -28,9 +29,14 @@
     const index = weekIds.indexOf(activeWeek);
     $('#prev-week').disabled = index <= 0;
     $('#next-week').disabled = index === weekIds.length - 1;
-    $('#active-week').textContent = activeWeek === 'all' ? '全部週次' : `第 ${activeWeek} 週`;
-    $('#result-count').textContent = `顯示 ${count} / ${cards.length} 張示例日程卡`;
-    $('#no-results').hidden = count > 0;
+    $('#active-week').textContent = activeWeek === 'all' ? '全部週次' : (weeks.find(b => b.dataset.week === activeWeek)?.dataset.label || `第 ${activeWeek} 週`);
+    $('#result-count').textContent = `顯示 ${count} / ${cards.length} 張${calendar ? '行程' : '示例日程'}卡`;
+    let visibleGap = false;
+    document.querySelectorAll('.calendar-gap').forEach(g => {
+      const show = (activeWeek === 'all' || activeWeek === g.dataset.calendarWeek) && country === 'all' && day === 'all' && region === 'all' && !query;
+      g.hidden = !show; visibleGap ||= show;
+    });
+    $('#no-results').hidden = count > 0 || visibleGap;
   }
   function chooseWeek(value) {
     activeWeek = value;
