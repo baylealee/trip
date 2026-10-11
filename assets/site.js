@@ -76,3 +76,22 @@
   $('#reset-packing').addEventListener('click', () => { saved = {}; boxes.forEach(b => b.checked = false); progress(); save(); });
   filter(); progress();
 })();
+
+;(() => {
+  'use strict';
+  document.querySelectorAll('.travel-tools').forEach(tool => {
+    const details=tool.querySelector('.map-disclosure'), select=tool.querySelector('.travel-stop'), load=tool.querySelector('.load-map'), hide=tool.querySelector('.hide-map'), slot=tool.querySelector('.travel-map'), status=tool.querySelector('.travel-status');
+    if(!details) return;
+    const mapLink=tool.querySelector('.open-map'), nav=tool.querySelector('.open-navigation'), copy=tool.querySelector('.copy-place');
+    let loaded=false;
+    function clearMap(){slot.replaceChildren();loaded=false;hide.hidden=true;load.hidden=false;}
+    function update(){const q=select.value;mapLink.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q);nav.href='https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(q);clearMap();status.textContent='';}
+    select.addEventListener('change',update);
+    load.addEventListener('click',()=>{if(loaded)return;const frame=document.createElement('iframe');frame.title='地圖：'+select.selectedOptions[0].textContent;frame.referrerPolicy='no-referrer';frame.loading='lazy';frame.src='https://maps.google.com/maps?q='+encodeURIComponent(select.value)+'&output=embed';slot.replaceChildren(frame);loaded=true;hide.hidden=false;load.hidden=true;status.textContent='地圖由 Google 提供；若未顯示，可使用「在 Google Maps 開啟」。';});
+    hide.addEventListener('click',()=>{clearMap();load.focus();status.textContent='地圖已關閉。';});
+    details.addEventListener('toggle',()=>{if(!details.open)clearMap();});
+    copy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(select.value);status.textContent='已複製地點名稱。';}catch{status.textContent='請長按複製：'+select.value;}});
+    const card=tool.closest('.day-card');new MutationObserver(()=>{if(card.hidden || card.style.display==='none'){details.open=false;tool.querySelectorAll('details').forEach(d=>d.open=false);clearMap();}}).observe(card,{attributes:true,attributeFilter:['hidden','style']});
+    update();
+  });
+})();
