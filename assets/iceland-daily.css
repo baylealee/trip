@@ -1,0 +1,90 @@
+/* Date-led Iceland journal. No styles affect the Canada guide. */
+body[data-guide="iceland"] .daily-date-ui { margin: 4px 0 20px; }
+body[data-guide="iceland"] .date-hint { display:flex; justify-content:space-between; gap:12px; margin:0 0 12px; color:#71614c; font-size:12px; }
+body[data-guide="iceland"] .date-hint span { font-size:11px; }
+body[data-guide="iceland"] .date-strip { position:relative; display:flex; gap:9px; overflow-x:auto; overscroll-behavior-x:contain; padding:5px 5px 13px; scrollbar-width:thin; scrollbar-color:#b7a486 transparent; }
+body[data-guide="iceland"] .date-chip { flex:1 0 85px; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:108px; padding:12px 14px; border:1px solid #cbb99c; border-radius:17px; color:#4f5c52; background:#fffaf0; box-shadow:0 3px 0 #d9ccb129; transition:background-color .16s, border-color .16s; }
+body[data-guide="iceland"] .date-chip b { font-family:var(--serif); font-size:24px; font-weight:600; line-height:1.5; }
+body[data-guide="iceland"] .date-chip-day { font-size:10px; letter-spacing:.12em; }
+body[data-guide="iceland"] .date-chip-weekday { font-size:11px; }
+body[data-guide="iceland"] .date-chip:hover { border-color:#866c4b; background:#f1ead9; }
+body[data-guide="iceland"] .date-chip[aria-pressed="true"] { color:#fffdf5; background:#526456; border-color:#526456; box-shadow:0 4px 0 #354a3d20; }
+body[data-guide="iceland"] .date-chip:focus-visible { outline-offset:2px; }
+body[data-guide="iceland"] .daily-view-actions { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:4px; }
+body[data-guide="iceland"] #all-days { min-height:44px; border:1px solid #bfae92; border-radius:8px; padding:8px 14px; color:#5a624f; background:#fffcf3; font-size:13px; }
+body[data-guide="iceland"] #all-days[aria-pressed="true"] { background:#526456; border-color:#526456; color:white; }
+body[data-guide="iceland"] .motion-choice { display:flex; align-items:center; gap:8px; min-height:44px; font-size:12px; color:#606657; cursor:pointer; }
+body[data-guide="iceland"] .motion-choice input { width:18px; height:18px; margin:0; accent-color:#526456; }
+body[data-guide="iceland"] .day-filters { border-top:1px solid var(--line); margin-top:12px; padding-top:3px; }
+body[data-guide="iceland"] .day-filters > summary { min-height:48px; padding:12px 0; font-size:13px; color:#65573f; cursor:pointer; }
+body[data-guide="iceland"] .day-filters > summary:focus-visible { outline:3px solid #994c35; outline-offset:2px; }
+body[data-guide="iceland"] .day-illustration { display:none; }
+body[data-guide="iceland"].daily-single-view #days { padding-top:30px; }
+body[data-guide="iceland"].daily-single-view .chapter-opening { display:none; }
+body[data-guide="iceland"].daily-single-view .chapter-block { margin:24px 0 40px; }
+body[data-guide="iceland"].daily-single-view .day-grid { grid-template-columns:minmax(0,1fr); }
+body[data-guide="iceland"].daily-single-view .day-card { max-width:920px; width:100%; margin:0 auto; border-radius:18px; box-shadow:0 6px 20px #6c5a3e08; }
+body[data-guide="iceland"].daily-single-view .day-top { align-items:center; padding:23px 28px; gap:22px; min-height:146px; }
+body[data-guide="iceland"].daily-single-view .date-block { min-width:84px; padding-right:22px; }
+body[data-guide="iceland"].daily-single-view .date-block b { font-size:30px; white-space:nowrap; }
+body[data-guide="iceland"].daily-single-view .day-heading h3 { font-size:26px; }
+body[data-guide="iceland"].daily-single-view .day-illustration { display:block; width:144px; height:112px; object-fit:contain; mix-blend-mode:multiply; flex:none; }
+body[data-guide="iceland"].daily-single-view .day-body { padding:26px 32px 30px; }
+body[data-guide="iceland"] .timeline-heading { font-size:13px; letter-spacing:.1em; color:#61705b; margin:24px 0 20px; }
+body[data-guide="iceland"] .timeline { margin-bottom:22px; }
+body[data-guide="iceland"] .timeline li { margin-left:7px; padding:0 0 26px 25px; border-left:2px solid #d5d9c3; }
+body[data-guide="iceland"] .timeline li::before { left:-6px; top:9px; width:10px; height:10px; background:#647f6a; border:2px solid #fffcf3; box-shadow:0 0 0 1px #8c9b7d; }
+body[data-guide="iceland"] .timeline li:last-child { border-left-color:transparent; padding-bottom:0; }
+body[data-guide="iceland"] .time { font-size:12px; margin-bottom:6px; color:#81533d; }
+body[data-guide="iceland"] .event-title { font-size:17px; font-weight:600; }
+body[data-guide="iceland"] .detail { font-size:14px; }
+body[data-guide="iceland"] .day-note { margin-bottom:24px; }
+body[data-guide="iceland"] .daily-inline-route { margin-top:24px; }
+body[data-guide="iceland"].daily-single-view .daily-weather { margin-bottom:24px; }
+body[data-guide="iceland"].daily-single-view .weather-guidance { display:grid; grid-template-columns:1fr 1fr; gap:0 24px; }
+body[data-guide="iceland"].daily-single-view .weather-guidance .weather-aurora { grid-column:1/-1; }
+/* One gentle 3.6-second illustration movement, not an endless animation. */
+@keyframes iceland-art-float { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-5px) rotate(.35deg)} }
+@keyframes iceland-day-arrive { 0%{transform:translateY(7px)} 60%{transform:translateY(-2px)} 100%{transform:translateY(0)} }
+body[data-guide="iceland"] .illustration-float { animation:iceland-art-float 3.6s ease-in-out 1; }
+body[data-guide="iceland"] .day-enter { animation:iceland-day-arrive 360ms ease-out 1; }
+body[data-guide="iceland"].daily-reduced-motion *, body[data-guide="iceland"].daily-reduced-motion *::before, body[data-guide="iceland"].daily-reduced-motion *::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; }
+@media (prefers-reduced-motion:reduce) {
+  body[data-guide="iceland"] *, body[data-guide="iceland"] *::before, body[data-guide="iceland"] *::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; }
+}
+@media (max-width:760px) {
+  body[data-guide="iceland"] .date-chip { flex:0 0 77px; min-height:100px; padding:10px 12px; border-radius:14px; }
+  body[data-guide="iceland"] .date-hint { flex-wrap:wrap; gap:3px 8px; }
+  body[data-guide="iceland"] .date-chip b { font-size:23px; }
+  body[data-guide="iceland"].daily-single-view .day-top { padding:18px 16px; gap:12px; min-height:126px; }
+  body[data-guide="iceland"].daily-single-view .date-block { min-width:65px; padding-right:12px; }
+  body[data-guide="iceland"].daily-single-view .date-block b { font-size:24px; }
+  body[data-guide="iceland"].daily-single-view .day-heading h3 { font-size:20px; }
+  body[data-guide="iceland"].daily-single-view .day-illustration { width:88px; height:86px; }
+  body[data-guide="iceland"].daily-single-view .day-body { padding:20px 18px; }
+  body[data-guide="iceland"].daily-single-view .weather-guidance { display:block; }
+  body[data-guide="iceland"] .timeline li { padding-left:20px; }
+}
+@media (max-width:430px) {
+  body[data-guide="iceland"].daily-single-view .day-top { flex-wrap:wrap; }
+  body[data-guide="iceland"].daily-single-view .day-heading { flex-basis:calc(100% - 84px); }
+  body[data-guide="iceland"].daily-single-view .day-illustration { width:100%; height:90px; margin-top:2px; }
+}
+@media print {
+  body[data-guide="iceland"] .chapter-block[hidden], body[data-guide="iceland"] .day-card[hidden] { display:block!important; }
+  body[data-guide="iceland"] .chapter-opening { display:grid!important; }
+  body[data-guide="iceland"] .chapter-opening.no-art { display:block!important; }
+  body[data-guide="iceland"] #no-results, body[data-guide="iceland"] .daily-date-ui, body[data-guide="iceland"] .day-filters, body[data-guide="iceland"] .day-illustration { display:none!important; }
+  body[data-guide="iceland"] .day-card { max-width:none!important; border-radius:3px!important; }
+  body[data-guide="iceland"] .day-top { padding:13px 16px!important; min-height:0!important; }
+  body[data-guide="iceland"] .day-body { padding:13px 16px!important; }
+  body[data-guide="iceland"] .day-heading h3 { font-size:14pt!important; }
+  body[data-guide="iceland"] .day-grid { display:block!important; }
+  body[data-guide="iceland"] * { animation:none!important; transition:none!important; }
+}
+
+html.iceland-reduced-motion { scroll-behavior:auto!important; }
+@media print {
+  body[data-guide="iceland"] .route-canvas { display:none!important; }
+  body[data-guide="iceland"] .route-foot::before { content:"列印版保留路線摘要；互動地圖請在網頁查看。"; display:block; font-size:10pt; }
+}
