@@ -1,0 +1,42 @@
+/* Lodging and laundry below each Iceland itinerary. */
+body[data-guide="iceland"] .daily-logistics {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #d7ccb4;
+  min-width: 0;
+}
+body[data-guide="iceland"] .daily-logistics-section {
+  padding: 16px;
+  border: 1px solid #ded5c2;
+  border-radius: 3px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+body[data-guide="iceland"] .daily-stay { background: #f7f1e5; }
+body[data-guide="iceland"] .daily-laundry { background: #f0f5ef; border-color: #d2ddce; }
+body[data-guide="iceland"] .daily-logistics h4 {
+  margin: 0 0 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: .04em;
+  color: #284e44;
+}
+body[data-guide="iceland"] .daily-logistics p {
+  margin: 7px 0;
+  font-size: 14px;
+  line-height: 1.8;
+}
+body[data-guide="iceland"] .daily-logistics .daily-property {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+body[data-guide="iceland"] .daily-logistics .maps { margin-bottom: 0; }
+@media (max-width: 480px) {
+  body[data-guide="iceland"] .daily-logistics-section { padding: 14px; }
+}
+@media print {
+  body[data-guide="iceland"] .daily-logistics-section { break-inside: avoid; }
+}
