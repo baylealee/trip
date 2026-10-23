@@ -1,62 +1,93 @@
-/* Date-scoped weather embedded in Iceland daily itinerary cards. */
+/* Concise date-scoped weather and aurora guidance inside Iceland itinerary cards. */
 body[data-guide="iceland"] .daily-weather {
   margin: 0 0 20px;
   padding: 16px;
   border: 1px solid #cadce2;
-  border-radius: 3px;
+  border-radius: 6px;
   background: #f0f6f7;
   min-width: 0;
   overflow-wrap: anywhere;
 }
 body[data-guide="iceland"] .daily-weather h4 {
-  margin: 0 0 8px;
-  font-size: 16px;
+  margin: 0 0 12px;
+  font-size: 15px;
   line-height: 1.5;
   color: #284e5b;
 }
-body[data-guide="iceland"] .daily-weather h5 {
-  margin: 12px 0 8px;
-  font-size: 15px;
+body[data-guide="iceland"] .weather-quick-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  min-width: 0;
+}
+body[data-guide="iceland"] .weather-icon {
+  flex: 0 0 auto;
+  font-size: 42px;
+  line-height: 1.2;
+}
+body[data-guide="iceland"] .weather-temperature {
+  display: block;
+  font-size: clamp(36px, 4vw, 42px);
+  font-weight: 750;
+  line-height: 1.15;
+  letter-spacing: -.025em;
+  color: #203f4a;
+}
+body[data-guide="iceland"] .weather-temperature .weather-unit {
+  font-size: .55em;
+  margin-left: 4px;
+  letter-spacing: 0;
+}
+body[data-guide="iceland"] .weather-condition {
+  margin: 4px 0 0;
+  font-size: 12px;
   line-height: 1.6;
-  color: #284e5b;
-}
-body[data-guide="iceland"] .daily-weather p {
-  margin: 7px 0;
-  font-size: 14px;
-  line-height: 1.8;
-}
-body[data-guide="iceland"] .daily-weather .weather-meta {
-  font-size: 12px;
   color: #536a72;
 }
-body[data-guide="iceland"] .daily-weather .weather-scope {
-  font-size: 12px;
-  color: #536a72;
+body[data-guide="iceland"] .weather-guidance { margin: 12px 0 0; }
+body[data-guide="iceland"] .weather-guidance > div {
+  display: grid;
+  grid-template-columns: 4.3em minmax(0,1fr);
+  gap: 8px;
+  margin: 9px 0;
+  align-items: start;
+  font-size: 13px;
+  line-height: 1.7;
 }
-body[data-guide="iceland"] .daily-weather-place + .daily-weather-place {
-  margin-top: 16px;
-  padding-top: 4px;
-  border-top: 1px solid #cadce2;
+body[data-guide="iceland"] .weather-guidance dt { font-weight: 700; color: #284e5b; }
+body[data-guide="iceland"] .weather-guidance dd { margin: 0; min-width: 0; }
+body[data-guide="iceland"] .weather-guidance dd a { white-space: nowrap; }
+body[data-guide="iceland"] .weather-updated {
+  margin: 10px 0 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #637780;
 }
-body[data-guide="iceland"] .daily-weather .maps { margin-top: 10px; }
 body[data-guide="iceland"] .weather-provenance {
-  margin-top: 16px;
-  border-top: 1px solid #cadce2;
+  margin-top: 8px;
+  border-top: 1px solid #d7e3e7;
 }
 body[data-guide="iceland"] .weather-provenance summary {
-  padding: 12px 0 4px;
+  padding: 10px 0 0;
   min-height: 44px;
   cursor: pointer;
-  font-size: 13px;
-  font-weight: 700;
-  color: #284e5b;
+  font-size: 12px;
+  color: #536a72;
 }
 body[data-guide="iceland"] .weather-provenance summary:focus-visible {
   outline: 3px solid #987738;
   outline-offset: 3px;
 }
-body[data-guide="iceland"] .weather-provenance-body p { font-size: 12px; }
+body[data-guide="iceland"] .weather-provenance-body p {
+  margin: 7px 0;
+  font-size: 12px;
+  line-height: 1.7;
+}
+body[data-guide="iceland"] .weather-provenance-body .maps { margin-top: 8px; }
 body[data-guide="iceland"] .weather-pending { background: #f6f6f0; border-color: #d8d9ca; }
+body[data-guide="iceland"] .weather-pending .weather-temperature { font-size: 30px; }
 @media (max-width: 480px) {
   body[data-guide="iceland"] .daily-weather { padding: 14px; }
+  body[data-guide="iceland"] .weather-icon { font-size: 36px; }
 }
