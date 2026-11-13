@@ -74,7 +74,17 @@
     b.addEventListener('change', () => { saved[b.dataset.save] = b.checked; progress(); save(); });
   });
   $('#reset-packing').addEventListener('click', () => { saved = {}; boxes.forEach(b => b.checked = false); progress(); save(); });
-  filter(); progress();
+  // Shareable region links open the matching itinerary without manual filtering.
+  function applyRegionLink() {
+    clear();
+    const region = new URL(window.location.href).searchParams.get('region');
+    if (region && [...controls.region.options].some(option => option.value === region)) {
+      controls.region.value = region;
+      filter();
+    }
+  }
+  window.addEventListener('popstate', applyRegionLink);
+  applyRegionLink(); progress();
 })();
 
 ;(() => {
